@@ -1,0 +1,11 @@
+::ng-deep nb-layout-column {
+  display: flex;
+  justify-content: center;
+}
+:host {
+  display: flex;
+}
+nb-chat {
+  width: 300px;
+  margin: 1rem;
+}
