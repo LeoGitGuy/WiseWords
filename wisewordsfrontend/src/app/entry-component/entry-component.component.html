@@ -1,13 +1,5 @@
-<nb-chat title="WiseWords" size="medium" status="warning">
-  <nb-chat-message *ngFor="let message of messages" [type]="message.type" [message]="message.text"
-    [reply]="message.reply" [sender]="message.user.name" [date]="message.date" [files]="message.files"
-    [quote]="message.quote" [latitude]="message.latitude" [longitude]="message.longitude"
-    [avatar]="message.user.avatar"></nb-chat-message>
-  <nb-chat-form (send)="sendMessage($event, 'WiseWords', 'https://i2.wp.com/allhtaccess.info/wp-content/uploads/2018/03/programming.gif?fit=1281%2C716&ssl=1', true)"
-    [showButton]="false" [dropFiles]="true">
-  </nb-chat-form>
-</nb-chat>
-<nb-chat title="GPT-3" size="medium" status="success">
+
+<nb-chat title="GPT-3" size="large" status="success">
   <nb-chat-message *ngFor="let message of messages" [type]="message.type" [message]="message.text"
     [reply]="!message.reply" [sender]="message.user.name" [date]="message.date" [files]="message.files"
     [quote]="message.quote" [latitude]="message.latitude" [longitude]="message.longitude"

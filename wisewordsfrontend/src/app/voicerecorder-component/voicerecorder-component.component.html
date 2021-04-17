@@ -1,7 +1,5 @@
 <div style="text-align:center;margin-top: 200px;">
     <a (click)="initiateRecording()" *ngIf="!recording"><img src="/assets/Start.png"> </a>
     <a (click)="stopRecording()" *ngIf="recording"><img src="/assets/Stop.png"></a>
-    <audio controls="" *ngIf="url">
-    <source [src]="sanitize(url)" type="audio/wav">
-    </audio>
+
 </div>

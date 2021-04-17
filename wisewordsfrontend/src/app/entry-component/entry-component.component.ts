@@ -55,7 +55,7 @@ gpt3Message(transcribedText : string){
       return {
         url: file.src,
         type: file.type,
-        icon: 'file-text-outline',
+        icon: 'headphones',
       };
     });
 
