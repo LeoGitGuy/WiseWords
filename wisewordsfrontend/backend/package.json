@@ -12,6 +12,7 @@
   },
   "private": true,
   "dependencies": {
+    "@iamtraction/google-translate": "^1.1.2",
     "express": "^4.17.1",
     "file-system": "^2.2.2",
     "got": "^11.8.2",
