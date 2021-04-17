@@ -23,6 +23,7 @@
     "@nebular/eva-icons": "7.0.0",
     "@nebular/theme": "^7.0.0",
     "eva-icons": "^1.1.2",
+    "microsoft-cognitiveservices-speech-sdk": "^1.16.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"
