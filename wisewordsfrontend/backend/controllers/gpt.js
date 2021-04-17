@@ -17,8 +17,6 @@ const gpt_func = (async (transcript, start_sequence, prompts) => {
   params["prompt"] += transcript + "\n###\n"+ start_sequence;
   console.log("STARTING SEQ");
   console.log(start_sequence);
-  console.log("PROMPT");
-  console.log(params["prompt"]);
   const headers = {
     'Authorization': 'Bearer ' + API_KEY,
   };
@@ -26,6 +24,8 @@ const gpt_func = (async (transcript, start_sequence, prompts) => {
   try {
     const response = await got.post(url, { json: params, headers: headers }).json();
     output = response.choices[0].text;
+    console.log("OUTPUT");
+    console.log(output);
     return output
   } catch (err) {
     console.log(err);

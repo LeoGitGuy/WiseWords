@@ -71,7 +71,7 @@ exports.createExcelDict = (req, res, next) => {
         }
       console.log("FIRST CHAR");
       console.log(gptres);
-      gpt_func(s2tres, prompts["starting_sequence"], prompts[mode]).then((finalGptres) => {
+      gpt_func(s2tres, prompts[mode]["starting_sequence"], prompts[mode]).then((finalGptres) => {
 
         res.status(201).json({
           transcript: s2tres,

@@ -33,20 +33,8 @@ exports.createExcelDict = (req, res, next) => {
       // let prompt = prompts.education.prompt
       gpt_func(translatedTranscript.text, "Semantic Category:", prompts["classification"]).then((gptres) => {
         let mode = "";
-        switch (gptres.charAt(0)) {
-          case "1":
-            mode = "company"
-            break;
-          case "2":
-            mode = "general"
-            break;
-          case "3":
-            mode = "education"
-            break;
-          default:
-            mode = "general"
-            break;
-        }
+
+
 
         gpt_func(translatedTranscript.text, "Subjects:\n", prompts[mode]).then((finalGptres) => {
           console.log(s2tres);
