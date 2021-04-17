@@ -19,9 +19,10 @@ private editSub : Subscription | undefined;
 
   chatAvatar = "https://thdaily.s3-us-west-1.amazonaws.com/gif_20200719232646.gif";
   ngOnInit(): void {
-    this.editSub = this.gpt3Service.getMessageUpdateListener().subscribe((newMsg : {transcription: string, gptres: string}) =>{
+    this.editSub = this.gpt3Service.getMessageUpdateListener().subscribe((newMsg : {messageTrans: string, messageGPT: string}) =>{
       console.log(newMsg);
-      this.gpt3Message(newMsg.gptres);
+      console.log(newMsg.messageGPT);
+      this.gpt3Message(newMsg.messageGPT);
     });
   }
 
@@ -42,12 +43,11 @@ gpt3Message(transcribedText : string){
 
 
   sendMessage(event: any, userName: string, avatar: string, reply: boolean) {
-    if(event.files != []){
+    if(event.files[0] != undefined){
       let myfile = event.files[0];
-
+      console.log(myfile);
+      console.log("here");
       this.gpt3Service.initiateUpload(myfile);
-
-
       console.log(myfile);
 
     }
