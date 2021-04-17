@@ -21,11 +21,13 @@ exports.createExcelDict = (req, res, next) => {
     console.log(number_of_words);
     recognizer.close();
 
-    gpt_func(s2tres + prompts[1], number_of_words).then((gptres) => {
+    gpt_func(s2tres + prompts.general, number_of_words).then((gptres) => {
 
       console.log(s2tres);
       res.status(201).json({
-        message: s2tres + "---------" + gptres,
+        transcript: s2tres,
+        gptres: gptres,
+        prompt: prompts.general
       });
     })
 
