@@ -1,8 +1,9 @@
+import { Gpt3summarizationService } from './../gpt3summarization.service';
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { HttpClient, HttpResponse } from "@angular/common/http";
 import { map } from "rxjs/operators";
-import { Subject } from "rxjs";
+import { Subject, Subscription } from "rxjs";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { stringify } from '@angular/compiler/src/util';
 @Component({
@@ -11,36 +12,17 @@ import { stringify } from '@angular/compiler/src/util';
   styleUrls: ['./entry-component.component.scss']
 })
 export class EntryComponentComponent implements OnInit {
-  constructor(private sanitizer : DomSanitizer, private http: HttpClient) { }
+  constructor(private sanitizer : DomSanitizer, private http: HttpClient, private gpt3Service: Gpt3summarizationService) { }
   messages: any[] = [];
   chatBotName = "GPT-3";
+private editSub : Subscription | undefined;
+
   chatAvatar = "https://thdaily.s3-us-west-1.amazonaws.com/gif_20200719232646.gif";
   ngOnInit(): void {
-  }
-
-  generatempdownload(){
-
-  }
-  initiateUpload(file: any){
-    const postData = new FormData()
-    postData.append("file", file, file.name)
-    this.http
-      .post<{ message: string}>(
-        "http://localhost:3000/wisewords/upload/audio",
-        postData
-      )
-      .subscribe((res) => {
-        console.log(res.message);
-        this.gpt3Message(res.message);
-
-        let str = "";
-        if (res.message == "false") {
-          str =
-            "Fehler beim Hochladen der Excel Datei. Die Tabelle wurde nicht korrekt befüllt. \n Folgender Fehler ist aufgetreten: \n\n";
-
-        }
-
-      });
+    this.editSub = this.gpt3Service.getMessageUpdateListener().subscribe((newMsg : {transcription: string, gptres: string}) =>{
+      console.log(newMsg);
+      this.gpt3Message(newMsg.gptres);
+    });
   }
 
 gpt3Message(transcribedText : string){
@@ -57,11 +39,13 @@ gpt3Message(transcribedText : string){
   })
 }
 
+
+
   sendMessage(event: any, userName: string, avatar: string, reply: boolean) {
     if(event.files != []){
       let myfile = event.files[0];
 
-      this.initiateUpload(myfile);
+      this.gpt3Service.initiateUpload(myfile);
 
 
       console.log(myfile);
