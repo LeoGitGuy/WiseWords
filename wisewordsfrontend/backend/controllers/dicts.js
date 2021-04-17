@@ -56,8 +56,8 @@ exports.createExcelDict = (req, res, next) => {
       recognizer.close();
       s2tres = final2.join(" ")
       gpt_func(s2tres, "Semantic Category:", prompts["classification"]).then((gptres) => {
-        let mode = "";
-        switch (gptres.charAt(0)) {
+        let mode = "general";
+        /* switch (gptres.charAt(0)) {
           case "1":
             mode = "company"
             break;
@@ -70,10 +70,10 @@ exports.createExcelDict = (req, res, next) => {
           default:
             mode = "general"
             break;
-        }
+        } */
         console.log("FIRST CHAR");
         console.log(gptres);
-        gpt_func(s2tres, prompts["starting_sequence"], prompts[mode]).then((finalGptres) => {
+        gpt_func(s2tres, prompts[mode]["starting_sequence"], prompts[mode]).then((finalGptres) => {
 
           res.status(201).json({
             transcript: s2tres,
