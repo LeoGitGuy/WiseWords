@@ -59,19 +59,15 @@ exports.createExcelDict = (req, res, next) => {
         let mode = "";
         if (gptres.includes("Company")) {
           mode = "company"
-          break;
         }
         else if (gptres.includes("General")) {
           mode = "general"
-          break;
         }
         else if (gptres.includes("Teacher")) {
           mode = "education"
-          break;
         }
         else {
           mode = "general"
-          break;
         }
       console.log("FIRST CHAR");
       console.log(gptres);
