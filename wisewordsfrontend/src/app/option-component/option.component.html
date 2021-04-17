@@ -1,0 +1,12 @@
+<nb-card>
+    <nb-card-header>
+        Choose your preferences: </nb-card-header>
+    <nb-card-body>
+
+        <nb-radio-group>
+            <nb-radio *ngFor="let option of options" [value]="option.value">
+                {{ option.label }}
+            </nb-radio>
+        </nb-radio-group>
+    </nb-card-body>
+</nb-card>
