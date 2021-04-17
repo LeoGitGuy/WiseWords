@@ -77,6 +77,7 @@ exports.createExcelDict = (req, res, next) => {
           transcript: s2tres,
           gptres: finalGptres,
           prompt: gptres
+
         });
       });
     });
