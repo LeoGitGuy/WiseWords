@@ -2,11 +2,11 @@ const got = require('got');
 
 const API_KEY = "sk-RfecCUXHspo3wLUqT5OxVRZUiveGmVsIAYdhkqmc";
 
-const gpt_func = (async (prompt) => {
+const gpt_func = (async (prompt, number_tokens) => {
   const url = 'https://api.openai.com/v1/engines/davinci/completions';
   const params = {
     "prompt": prompt,
-    "max_tokens": 160,
+    "max_tokens": number_tokens,
     "temperature": 0.7,
     "frequency_penalty": 0.5
   };
