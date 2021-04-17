@@ -21,16 +21,16 @@ export class Gpt3summarizationService {
     const postData = new FormData()
     postData.append("file", audioFile, audioFile.name == undefined ? "newAudioFile.wav" : audioFile.name)
     this.http
-      .post<{ message: string}>(
+      .post<{ transcript: string, gptres: string, prompt: string}>(
        this.BASE_URL + "audio",
         postData
       )
       .subscribe((res) => {
-        console.log(res.message);
-        this.receivedMessage = res.message;
+        console.log(res.transcript + res.prompt + "\n###\n" + res.gptres);
+        this.receivedMessage = res.transcript;
 
         let str = "";
-        if (res.message == "false") {
+        if (res.transcript == "false") {
           str =
             "Fehler beim Hochladen der Excel Datei. Die Tabelle wurde nicht korrekt befüllt. \n Folgender Fehler ist aufgetreten: \n\n";
 
