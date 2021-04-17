@@ -2,6 +2,7 @@ const got = require('got');
 
 const API_KEY = "sk-RfecCUXHspo3wLUqT5OxVRZUiveGmVsIAYdhkqmc";
 
+
 const gpt_func = (async (transcription,start_sequence, prompt_dict) => {
   const url = 'https://api.openai.com/v1/engines/davinci/completions';
   const params = prompt_dict

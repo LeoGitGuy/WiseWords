@@ -37,7 +37,7 @@ import { VoicerecorderComponentComponent } from './voicerecorder-component/voice
     NbCardModule,
     NbCheckboxModule,
     NbSelectModule,
-    NbRadioModule
+    NbRadioModule,
     HttpClientModule
   ],
   providers: [],

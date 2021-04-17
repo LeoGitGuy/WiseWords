@@ -1,3 +1,4 @@
+import { Gpt3summarizationService } from './../gpt3summarization.service';
 import { Component, OnInit } from '@angular/core';
 
 declare var $: any;
@@ -19,7 +20,9 @@ export class VoicerecorderComponentComponent implements OnInit {
   //URL of Blob
   url: string | undefined;
   error: string | undefined;
-  constructor(private domSanitizer: DomSanitizer) {}
+
+  constructor(private domSanitizer: DomSanitizer, private gpt3Service: Gpt3summarizationService) {}
+
   sanitize(url: string) {
   return this.domSanitizer.bypassSecurityTrustUrl(url);
   }
@@ -63,6 +66,8 @@ export class VoicerecorderComponentComponent implements OnInit {
   this.url = URL.createObjectURL(blob);
   console.log("blob", blob);
   console.log("url", this.url);
+  console.log("name")
+  this.gpt3Service.initiateUpload(blob);
   }
   /**
   * Process Error.
