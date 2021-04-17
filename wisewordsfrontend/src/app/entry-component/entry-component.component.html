@@ -12,7 +12,7 @@
     [reply]="!message.reply" [sender]="message.user.name" [date]="message.date" [files]="message.files"
     [quote]="message.quote" [latitude]="message.latitude" [longitude]="message.longitude"
     [avatar]="message.user.avatar"></nb-chat-message>
-  <nb-chat-form (send)="sendMessage($event, 'GPT-3', 'https://thdaily.s3-us-west-1.amazonaws.com/gif_20200719232646.gif', false)" [showButton]="false"
+  <nb-chat-form (send)="sendMessage($event, chatBotName, 'https://thdaily.s3-us-west-1.amazonaws.com/gif_20200719232646.gif', false)" [showButton]="false"
     [dropFiles]="true">
   </nb-chat-form>
 </nb-chat>
