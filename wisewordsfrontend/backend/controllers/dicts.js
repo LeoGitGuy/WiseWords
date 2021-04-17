@@ -54,36 +54,35 @@ exports.createExcelDict = (req, res, next) => {
 
     recognizer.stopContinuousRecognitionAsync(() => {
       recognizer.close();
-      s2tres = final2.join(" ")
+      s2tres = final2.join(" ");
       gpt_func(s2tres, "Semantic Category:", prompts["classification"]).then((gptres) => {
-        let mode = "general";
-        /* switch (gptres.charAt(0)) {
-          case "1":
-            mode = "company"
-            break;
-          case "2":
-            mode = "general"
-            break;
-          case "3":
-            mode = "education"
-            break;
-          default:
-            mode = "general"
-            break;
-        } */
-        console.log("FIRST CHAR");
-        console.log(gptres);
-        gpt_func(s2tres, prompts[mode]["starting_sequence"], prompts[mode]).then((finalGptres) => {
+        let mode = "";
+        if (gptres.includes("Company")) {
+          mode = "company"
+        }
+        else if (gptres.includes("General")) {
+          mode = "general"
+        }
+        else if (gptres.includes("Teacher")) {
+          mode = "education"
+        }
+        else {
+          mode = "general"
+        }
+      console.log("FIRST CHAR");
+      console.log(gptres);
+      gpt_func(s2tres, prompts[mode]["starting_sequence"], prompts[mode]).then((finalGptres) => {
 
-          res.status(201).json({
-            transcript: s2tres,
-            gptres: finalGptres,
-            prompt: gptres
-          });
+        res.status(201).json({
+          transcript: s2tres,
+          gptres: finalGptres,
+          prompt: gptres
+
         });
       });
     });
-  };
+  });
+};
   //let number_of_words = (s2tres.split(" ").length + s2tres.split(" ").length%2) / 2
   //console.log(number_of_words);
   /*  Wir mussen zuerst gpt_func aufrufen mit s2tres und prompts.classification.prompt als Argumente
