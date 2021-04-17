@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -11,7 +11,7 @@ import { EntryComponentComponent } from './entry-component/entry-component.compo
 @NgModule({
   declarations: [
     AppComponent,
-    EntryComponentComponent
+    EntryComponentComponent,
   ],
   imports: [
     BrowserModule,
@@ -24,7 +24,8 @@ import { EntryComponentComponent } from './entry-component/entry-component.compo
     NbEvaIconsModule,
     NbSidebarModule.forRoot(),
     NbButtonModule,
-    NbChatModule
+    NbChatModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
