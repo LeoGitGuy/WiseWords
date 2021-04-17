@@ -47,6 +47,7 @@ exports.createExcelDict = (req, res, next) => {
             mode = "general"
             break;
         }
+
         gpt_func(translatedTranscript.text, "Subjects:\n", prompts[mode]).then((finalGptres) => {
           console.log(s2tres);
           res.status(201).json({

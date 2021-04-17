@@ -14,7 +14,11 @@ const gpt_func = (async (transcript, start_sequence, prompts) => {
     "frequency_penalty": prompts["frequency_penalty"],
     "presence_penalty": prompts["presence_penalty"]
   };
-  params["prompt"] += "\n###\n" + transcript + "\n###\n"+ start_sequence
+  params["prompt"] += transcript + "\n###\n"+ start_sequence;
+  console.log("STARTING SEQ");
+  console.log(start_sequence);
+  console.log("PROMPT");
+  console.log(params["prompt"]);
   const headers = {
     'Authorization': 'Bearer ' + API_KEY,
   };
