@@ -12,7 +12,7 @@ function fromFile() {
     recognizer.recognizeOnceAsync(result => {
       console.log(`RECOGNIZED: Text=${result.language}`);
       recognizer.close();
-      gpt_func(transcription,"Semantic Category:\n", prompts.classification).then((myres_0) => {
+      gpt_func(transcription,"Semantic Category:\n", prompts.classification.prompt).then((myres_0) => {
         console.log(myres_0);
       })
 
