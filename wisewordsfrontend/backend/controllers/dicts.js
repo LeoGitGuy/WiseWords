@@ -29,7 +29,7 @@ exports.createExcelDict = (req, res, next) => {
       // let prompt = prompts.education.prompt
     gpt_func(s2tres, "Semantic Category:",prompts["classification"]).then((gptres) => {
       let mode = "";
-      switch(gptres.chartAt(0)){
+      switch(gptres.charAt(0)){
         case "1":
           mode = "company"
           break;
