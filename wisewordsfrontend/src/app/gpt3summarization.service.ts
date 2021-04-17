@@ -13,24 +13,30 @@ export class Gpt3summarizationService {
 
   BASE_URL = environment.urlRoot;
 
-  receivedMessage = "";
+  receivedMessage = {messageTrans: "", messageGPT: ""};
+  private messageUpdate = new Subject<any>();
 
   constructor(private http: HttpClient) { }
+
+  getMessageUpdateListener(){
+    return this.messageUpdate.asObservable();
+  }
 
   initiateUpload(audioFile: any){
     const postData = new FormData()
     postData.append("file", audioFile, audioFile.name == undefined ? "newAudioFile.wav" : audioFile.name)
     this.http
-      .post<{ message: string}>(
+      .post<{ transcription: string, gptres: string, prompt: string}>(
        this.BASE_URL + "audio",
         postData
       )
       .subscribe((res) => {
-        console.log(res.message);
-        this.receivedMessage = res.message;
 
+        this.receivedMessage.messageTrans = res.transcription;
+        this.receivedMessage.messageGPT = res.gptres;
+        this.messageUpdate.next(...[this.receivedMessage]);
         let str = "";
-        if (res.message == "false") {
+        if (res.transcription == "false") {
           str =
             "Fehler beim Hochladen der Excel Datei. Die Tabelle wurde nicht korrekt befüllt. \n Folgender Fehler ist aufgetreten: \n\n";
 
