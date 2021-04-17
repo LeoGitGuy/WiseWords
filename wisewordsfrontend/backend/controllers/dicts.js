@@ -21,15 +21,21 @@ exports.createExcelDict = (req, res, next) => {
     console.log(number_of_words);
     recognizer.close();
 
-    gpt_func(s2tres + prompts.general, number_of_words).then((gptres) => {
+    /*  Wir mussen zuerst gpt_func aufrufen mit s2tres und prompts.classification.prompt als Argumente 
+    und dann diese if statement integrieren, um zu entscheiden welche prompt wir mit der 
+    Transkription benutzen sollen um die Zusammenfassung zu bekommen. */
+    // Diese if statement soll unser Prompt bestimmen. i.e:
+    // if ....
+      // let prompt = prompts.education.prompt
+
+    gpt_func(s2tres + prompt, number_of_words).then((gptres) => {
 
       console.log(s2tres);
       res.status(201).json({
         transcript: s2tres,
         gptres: gptres,
-        prompt: prompts.general
+        prompt: prompt
       });
     })
-
   });
 };

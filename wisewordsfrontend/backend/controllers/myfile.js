@@ -2,7 +2,7 @@ const fs = require('file-system');
 const sdk = require('microsoft-cognitiveservices-speech-sdk');
 const speechConfig = sdk.SpeechConfig.fromSubscription("5527e7ebc99a48948a91f55d3b1728cf", "westeurope");
 const { gpt_func } = require("./gpt")
-import { classification_dict,education_dict,email_dict,company_dict,general_dict } from '.excels/prompts.js';
+import { prompts } from '../models/prompts';
 
 function fromFile() {
 
@@ -12,7 +12,7 @@ function fromFile() {
     recognizer.recognizeOnceAsync(result => {
       console.log(`RECOGNIZED: Text=${result.language}`);
       recognizer.close();
-      gpt_func(transcription,"Semantic Category:\n", classification_dict).then((myres_0) => {
+      gpt_func(transcription,"Semantic Category:\n", prompts.classification).then((myres_0) => {
         console.log(myres_0);
       })
 
