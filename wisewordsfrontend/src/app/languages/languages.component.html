@@ -1,4 +1,4 @@
-<nb-select placeholder="Select Showcase" [(selected)]="selectedItem">
+<nb-select [(selected)]="selectedItem" (selectedChange)="newLanguage($event)">
     <nb-option value="german">German</nb-option>
     <nb-option value="english">English</nb-option>
     <nb-option value="french">French</nb-option>
