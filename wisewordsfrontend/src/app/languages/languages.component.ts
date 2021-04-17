@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LanguagesComponent implements OnInit {
 
-  selectedItem = 'german'
+  selectedItem = 'de'
 
   constructor(private gpt3service: Gpt3summarizationService) { }
 

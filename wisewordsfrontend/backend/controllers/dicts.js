@@ -15,6 +15,7 @@ var final2 = []
 var s2tres = "";
 
 exports.createExcelDict = (req, res, next) => {
+  let language = req.query.language;
   final2 = []
   audioConfig = sdk.AudioConfig.fromWavFileInput(fs.readFileSync("../backend/excels/" + req.file.filename));
   recognizer = new sdk.SpeechRecognizer(speechConfig, audioConfig);
@@ -69,20 +70,29 @@ exports.createExcelDict = (req, res, next) => {
         else {
           mode = "general"
         }
-      console.log("FIRST CHAR");
-      console.log(gptres);
-      gpt_func(s2tres, prompts[mode]["starting_sequence"], prompts[mode]).then((finalGptres) => {
-
-        res.status(201).json({
-          transcript: s2tres,
-          gptres: finalGptres,
-          prompt: gptres
-
+        console.log("FIRST CHAR");
+        console.log(gptres);
+        gpt_func(s2tres, prompts[mode]["starting_sequence"], prompts[mode]).then((finalGptres) => {
+          if(language != "en"){
+          translate(finalGptres, { to: language }).then(translatedSummary => {
+            res.status(201).json({
+              transcript: s2tres,
+              gptres: translatedSummary.text,
+              prompt: gptres
+            });
+          });
+          }
+          else {
+            res.status(201).json({
+              transcript: s2tres,
+              gptres: finalGptres,
+              prompt: gptres
+            });
+          }
         });
       });
     });
-  });
-};
+  };
   //let number_of_words = (s2tres.split(" ").length + s2tres.split(" ").length%2) / 2
   //console.log(number_of_words);
   /*  Wir mussen zuerst gpt_func aufrufen mit s2tres und prompts.classification.prompt als Argumente
