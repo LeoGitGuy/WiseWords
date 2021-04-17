@@ -2,14 +2,11 @@ const got = require('got');
 
 const API_KEY = "sk-RfecCUXHspo3wLUqT5OxVRZUiveGmVsIAYdhkqmc";
 
-const gpt_func = (async (prompt, number_tokens) => {
+
+const gpt_func = (async (transcription,start_sequence, prompt_dict) => {
   const url = 'https://api.openai.com/v1/engines/davinci/completions';
-  const params = {
-    "prompt": prompt,
-    "max_tokens": number_tokens,
-    "temperature": 0.7,
-    "frequency_penalty": 0.5
-  };
+  const params = prompt_dict
+  params["prompt"] += transcription + "\n###\n"+ start_sequence
   const headers = {
     'Authorization': 'Bearer ' + API_KEY,
   };
@@ -23,4 +20,13 @@ const gpt_func = (async (prompt, number_tokens) => {
   }
 });
 
+delete(key) {
+  if(this.hasKey(key)) {
+     delete this.container[key];
+     return true;
+  }
+  return false;
+};
+
 module.exports.gpt_func = gpt_func;
+
