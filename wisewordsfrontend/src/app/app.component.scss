@@ -1,0 +1,25 @@
+nb-layout-column {
+    background-color: #314B47;
+    padding: 10rem 2.25rem 0.75rem; //funktioiniert nicht#
+    //margin: 5rem 0rem 0rem;
+}
+
+nb-sidebar {
+    //farbe linke Seite
+    background-color: #465D5A;
+}
+
+nb-layout-header {
+    background-color: #465D5A;
+    color: #FCFF57;
+    font-size: 20rem;
+}
+
+nb-layout-header {
+    height: 5rem;
+}
+
+nb-layout-header {
+    //Box-Schatten von der Überschrift ganz oben
+    box-shadow: 0 0.5rem 1rem 0 #1a1f33;
+}
