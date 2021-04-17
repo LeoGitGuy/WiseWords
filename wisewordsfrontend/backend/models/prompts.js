@@ -1,5 +1,5 @@
 module.exports.prompts = {
-  classification : {
+  classification: {
     "prompt": `Classify this text into one of the following 4 semantic categories:
     \n1) A Company meeting. 
     \n2) A General conversation.
@@ -91,21 +91,21 @@ module.exports.prompts = {
     "frequency_penalty": 0,
     "presence_penalty": 0,
     "stop": ["."],
-    },
-    general : {
-      "prompt" : `
+  },
+  general: {
+    "prompt": `
       
       
       
       `,
-      "temperature": 0.3,
-      "max_tokens": 10,
-      "top_p": 1,
-      "frequency_penalty": 0,
-      "presence_penalty": 0,
-      "stop": ["."],
-    },
-  education : {
+    "temperature": 0.3,
+    "max_tokens": 10,
+    "top_p": 1,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "stop": ["."],
+  },
+  education: {
     "prompt": `Summarize for a school or university class. Do not repeat yourself. Use different emojis.
     \n### \nGood morning pupils, today is Thursday. This is the memo for your homework. 
     For history class, don't forget to read up about Rome in the book on page 21. 
@@ -211,5 +211,23 @@ module.exports.prompts = {
     "frequency_penalty": 0.15,
     "presence_penalty": 0,
     "stop": ["###"],
-    }
+  },
+  company: {
+    "prompt": "###\nShort summary: Antonia, Julia, Leo, Kathi, and Lisa will be at the meeting on Friday at 3 pm. All of them know at least the basics of the project, so we can save the introductory blah-blah. We start with a 10 minute presentation (our 180 presentation modified and \"professionalized\"): agenda, team, methods, personas, results. After that we give 5 minutes An overview of the 9 Solution cards. Afterwards 15 min Q&A. After that I throw one presenter (us) and one listener (AHEAD TEam) 1:1 into a breakout session for 10 minutes. Then each member of the audience can say which solution card would interest him the most. Accordingly, it is our job to go over this Solution Card in more detail and answer questions. Then the end. Before we send and hold the 180 Präsi: We should send it to Lisa and Leo until 05.03, so they can check that there are no confidential details in it.\n###\ntldr:\n| Antonia, Julia, Leo, Kathi, and Lisa will be at the meeting on Friday at 3:00 p.m. | Deadline: ?\n| We start with a 10 minute presentation: agenda, team, methods, personas, results | Deadline: ?\n| After that we give a 5 minutes overview of the 9 Solution cards | Deadline: ?\n| Afterwards 15 min Q&A | Deadline: ?\n| After that I throw one presenter and one listener into a breakout session for 10 minutes | Deadline: ?\n| Each member of the audience can say which solution card interests him the most | Deadline ?\n| Before we send and hold the 180 Präsi: We should send it to Lisa and Leo ❗ Deadline: 05.03\n###\nHey guys, just for the meeting today a quick heads up. We had a meeting yesterday with Maxxon, who develop our new motor for our skateboards. They said we should take a look at their newly developed Motor R200 until tomorrow. Also don't forget that today we have a meeting with Munich Woodworks at 3:00 PM I have set you guys an outlook calendar entry. and another Teams call with our axle company which is at, I think, 4:00 AM. Also, don't forget in one week our sustainability report is due. Yeah, I think that's all I wanted to say I guess. Yep, have a great day.\n###\ntldr:\n| Maxxon wants us to take a look at their newly developed Motor R200 ❗ Deadline: tomorrw\n| Meeting with Munich Woodworks at 3:00 p.m. , I have set you guys an outlook calendar entry |  Deadline: ?\n| Our sustainability report is due ❗ Deadline: in one week\n###\nGood morning, my dear coworkers, just a quick heads up for you. Yesterday we had our meeting with our wood supplier which is our partner and they told us that they also have a new concept for an actual design. They want to show us. Also, today we have another meeting with our axle delivery driver at 3:00 AM. I sent you guys the email. And our steel company call is at 4:00 PM. Also, don't forget that next week on thursday is our report for the executives, which is very important, don't forget it. So ahm get it done until next week. Also coffee brake today with Mrs. Smith at the townhall see you there. Keep that in mind. I hope you guys all have a great work day and see you later. \n###\ntldr:\n| Our wood supplier also has a new concept for an actual design | Deadline: ?\n| We have a meeting with our axle delivery driver at 3:00 p.m. | Deadline: ?\n| Our steel company call is at 4:00 p.m. | Deadline: ?\n| Our report for the executives, which is very important, don't forget it ❗ Deadline: next week on thursday\n| Also coffee brake today with Mrs. Smith at the townhall | Deadline: ?\n###\nAnd the second is there is an aspect, from which Professor Rotter drew my attention. I have of course not read it all, but he said totally interesting he found that, the steering stuff omitted, and instead you steered like a tank, that the wheels on one side turn faster and on the other side slower and thus the vehicle drives around the corner. He said it could be, however, that this leads to more abrasion on the track, which of course would not be so good for our irrigation gentlemen, who also do not want to dump microplastics on the plants. But nevertheless that was probably an interesting aspect, Mr. Gaßt and Mr. Sobaler you should look at that aspect more exactly until tomorrow. And read through it. I am now in this air cushion meeting from 3:30 p.m. to 4:30 p.m. and then I will continue until 6:30 p.m. with Mr. Welter in the material meeting I will try to finish at 7:15 p.m. so that I still have 15 minutes to look at the finished presentation and if you have any questions before the meeting at 6:30 p.m. to answer them, thank you.\n###\ntldr:\n| Prof. Rotter said steering like a tank might be interesting. This could lead to microplastic on the plant, which is would not be so good for our irrigation gentlemen | Deadline: ?\n| Mr. Gaßt and Mr Sobaler should look at that aspect more exactly ❗ Deadline: tomorrow\n| I have a meeting from 3:30 p.m. to 4:30 p.m. and then from 6:30 p.m. to 7:15 p.m. with Mr. Welter in the material meeting | Deadline: ?\n###\n",
+    "temperature": 0.5,
+    "max_tokens": 160,
+    "top_p": 1,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "stop": ["###"]
+  },
+  general:{
+    "prompt": "Summarize this text in a short and simple way. Use emojis. Do not repeat yourself.\n### \nHey Rick,I have to tell you a crazy story from my holiday in Canada. You won't believe how close we were to death. First we had a 5 day hiking trip on Vancouver Island on the West Coast trail where we just had to live out of our bags and walked 400 km along the coast. Then we had a awesome boat cruise through the inside passage where we saw whales. You won't believe it how funny it was to see the tourists hunting for photos of whales. I don't want to make this message to long but one last story. We went on a 3 day hike at the Kluanelake. But we got completely lost because there were no real trails and we only had a small map. My girlfriend did not have her glasses on so she thought all the time that she saw a bear everywhere. I have to end now, but I will tell you the whole story later.\n### \nTopic: Crazy holiday in Canada.\nsummary of important points: \n- 🥾 5 day 400 km hiking trip on Vancouver Island on the West Coast trail where we had to live out of our bags. 😅😅\n- awesome boat cruise 🚤 through the inside passage, we saw whales 🐳 and tourists hunting for photos of whales.\n- we got lost on a 3 day hike at the Kluanelake because we had a small map 🗺.\n- girlfriend thought she saw a bear 🐻 because she did not have her glasses.\n###\nYoo tell Maria thanks a lot, her message was mega helpful. I'll have a look around Ehrenfeld in Cologne, that sounds good. I definitely want to live on the Rhein side of the Dom. Digga is she hot? From her voice she sounds soothing. Lol bad timing since I'm asking for her number now but yes I want to live in a shared apartment so it would be good if I would contact her. maybe she knows someone who needs a roommate. Hey just a quick question. If your boss calls you by your first name, would you call him by his first name?\n###\nTopic: Thank Maria for the help.\nsummary of important points:\n- I will look around Ehrenfeld in Cologne, I want to live on the Rhein side of the Dom.⛪️🤗\n- Is Maria hot ? Her voice sounds soothing 🎵, can you give me her number?\n- Does she know someone who need a roommate?\n- If your boss calls you by your first name, would you call him by his first name? 🤓🤓🤓\n###\nIn the US, you have to go to the pharmacy every month to pick up your medication. Because they are narcotics, you can only get a month's supply. Is it the same in Germany? Do you have to go to the doctor every month or do you get several prescriptions from the doctor? But thank you for the info, easy thank you. Tell Ruben I will write him tonight after work.\n###\nTopic: Medication in Germany. \nsummary of important points:\n- In the US 🇺🇸, you have to go to the pharmacy to pick up your medication 💊 every month because they are narcotics. 🤣🙃\n- Is this the case in Germany 🧐?\n- 📲 Tell Ruben I will contact him after work \n###\nHey, I'm so sorry I haven't responded up until now. I've been snowed under with my full time course. It's every day from 9:00 AM to 7:00 PM and that's why this today. During like a in the afternoon might be a little bit difficult. I mean, if you're still hanging out at like 8:00 PM then sure I can come but I don't know. I think you've got something you're leaving tomorrow. Hey Ann, let me know. I will come sorry for not for being like absolute everything. I've just, you know, being like trying to catch my breath trying to do life. While this of course happens, you know from. All day, every day.\n###\nTopic: Hanging out tonight\nsummary of important points:\n- Sorry I haven't responded, I have been extremely busy with my course 💻💻.\n- If you're still hanging out at like 8:00 PM ⏰ then I can come.\n###\nHey babe well OK go for news it really does not look good in Netherlands. I just looked at the press conference and to be honest I think it's scary as **** like the full press conference. There are people screaming outside like rioting. I feel like New Year's and maybe even these next coming weeks are just gonna be one big ******* puh, like hooligan, riots, police vibe. But yeah, next to that we are only allowed to have two visitors in the next month. 2 visitors per household's. Everybody that comes into the Netherlands needs to have a negative Covid test. Yeah, so that's kind of the deal. So I don't think there's going to be any partying happening, unfortunately. If it will be, will be spontaneous, but I maybe like four or five people, but nothing real, so yeah. Man, well, let's see how it goes. The Christmas plans of my family are canceled. And new years cancelled. And I just hope that I can come into the Netherlands and then I'll be able to come back to to Germany. But yeah, how are you? How did your calls go? Let me know. I hope it's all good man. I'm sorry to bring you bad news. Sending your love baby. \n###\nTopic: Situation in the Netherlands\nsummary of important points:\n- News are not good in Netherlands, people are rioting.😶😶\n- We are only allowed two visitors 😵, everybody that comes needs a negative Covid test.\n- 😭😭 Unfortunately there is going to be no partying.\n- Christmas and new years is cancelled.🎅\n- How are you, how did your calls go?\n###\n\n",
+    "temperature": 0.35,
+    "max_tokens": 155,
+    "top_p": 1,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "stop": ["###"]
+  }
 };
