@@ -13,9 +13,14 @@ export class Gpt3summarizationService {
 
   BASE_URL = environment.urlRoot;
 
-  receivedMessage = "";
+  receivedMessage = {messageTrans: "", messageGPT: ""};
+  private messageUpdate = new Subject<any>();
 
   constructor(private http: HttpClient) { }
+
+  getMessageUpdateListener(){
+    return this.messageUpdate.asObservable();
+  }
 
   initiateUpload(audioFile: any){
     const postData = new FormData()
@@ -27,13 +32,13 @@ export class Gpt3summarizationService {
       )
       .subscribe((res) => {
         console.log(res.transcript + res.prompt + "\n###\n" + res.gptres);
-        this.receivedMessage = res.transcript;
-
+        this.receivedMessage.messageTrans = res.transcript;
+        this.receivedMessage.messageGPT = res.gptres;
+        this.messageUpdate.next(...[this.receivedMessage]);
         let str = "";
         if (res.transcript == "false") {
           str =
             "Fehler beim Hochladen der Excel Datei. Die Tabelle wurde nicht korrekt befüllt. \n Folgender Fehler ist aufgetreten: \n\n";
-
         }
 
       });
