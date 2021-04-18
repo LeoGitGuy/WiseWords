@@ -1,0 +1,4 @@
+{
+    "appService.deploySubpath": ".",
+    "appService.defaultWebAppToDeploy": "/subscriptions/18431b21-c599-4cb1-b071-dba562b1ad6d/resourceGroups/wisewordsdeep/providers/Microsoft.Web/sites/wisewordsdeep"
+}
