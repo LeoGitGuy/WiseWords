@@ -1,12 +1,10 @@
 <nb-card>
     <nb-card-header>
-        Choose your preferences: </nb-card-header>
+        Instructions: </nb-card-header>
     <nb-card-body>
-
-        <nb-radio-group>
-            <nb-radio *ngFor="let option of options" [value]="option.value">
-                {{ option.label }}
-            </nb-radio>
-        </nb-radio-group>
+      To record a new message, press the microphone, start speaking and press it again when you are finished.
+      Alternatively, you can drag an audio file into the chat field and press enter.
+      After the processing is done, you receive your result.
     </nb-card-body>
 </nb-card>
+
