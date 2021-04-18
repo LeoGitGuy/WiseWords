@@ -13,7 +13,7 @@ export class Gpt3summarizationService {
 
   BASE_URL = environment.urlRoot;
 
-  LANGUAGE = "german";
+  LANGUAGE = "en";
 
   receivedMessage = {messageTrans: "", messageGPT: ""};
   private messageUpdate = new Subject<any>();
