@@ -1,5 +1,7 @@
 # WiseWords
-The award winning GPT-3 engine for VoiceLine
+The GPT-3 Hackathon contribution for VoiceLine
+
+Watch the demo video [here](https://drive.google.com/file/d/1WPBip2WWQI0rXqf7RG3HA7W9_6ckqSuJ/view?usp=sharing)
 
 This is our GitHub Repository.
 Ideally, there will be one folder for our backend and one folder for our frontend
